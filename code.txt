@@ -1,1 +1,289 @@
-
+insertion sort
+def insertionSort(arr):
+for i in range(1, len(arr)):
+key = arr[i]
+j = i-1
+while j >= 0 and key < arr[j] :
+arr[j + 1] = arr[j]
+j -= 1
+arr[j + 1] = key
+arr = [12, 11, 13, 5, 6]
+insertionSort(arr)
+for i in range(len(arr)):
+print ("% d" % arr[i])
+2.quick sort
+def partition(l, r, nums):
+pivot, ptr = nums[r], l
+for i in range(l, r):
+if nums[i] <= pivot:
+nums[i], nums[ptr] = nums[ptr], nums[i]
+ptr += 1
+nums[ptr], nums[r] = nums[r], nums[ptr]
+return ptr
+def quicksort(l, r, nums):
+if len(nums) == 1:
+return nums
+if l < r:
+pi = partition(l, r, nums)
+quicksort(l, pi-1, nums)
+quicksort(pi+1, r, nums)
+return nums
+data[4, 5, 1, 2, 3]
+print("unsorted array")
+print (data)
+size=len(data)
+quicksort(data,0,size-1)print('sorted array in ascending order:')
+print(data)
+3.merge sort
+def mergeSort(arr):
+if len(arr) > 1:
+mid = len(arr)//2
+L = arr[:mid]
+R = arr[mid:]
+mergeSort(L)
+mergeSort(R)
+i = j = k = 0
+while i < len(L) and j < len(R):
+if L[i] < R[j]:
+arr[k] = L[i]
+i += 1
+else:
+arr[k] = R[j]
+j += 1
+k += 1
+while i < len(L):
+arr[k] = L[i]
+i += 1
+k += 1
+while j < len(R):
+arr[k] = R[j]
+j += 1
+k += 1
+def printList(arr):for i in range(len(arr)):
+print(arr[i], end=" ")
+print()
+if __name__ == '__main__':
+arr = [12, 11, 13, 5, 6, 7]
+print("Given array is", end="\n")
+printList(arr)
+mergeSort(arr)
+print("Sorted array is: ", end="\n")
+printList(arr)
+4.single linked list
+class Node(object):
+def __init__(self, data, Next = None):
+self.data = data
+self.next = Next
+def getData(self):
+return self.data
+def setData(self, data):
+self.data = data
+def getNext(self):
+return self.next
+def setNext(self, newNext):
+self.next = newNext
+5.doubly linked list
+class Node:
+def_init_(self,data):self.data=data
+self.next=None
+self.prev=None
+classDoublyLinkedList:
+def_init_(self):
+self.head=None
+defpush(self,new_data):
+new_node=Node(new_data)
+new_node.next=self.head
+ifself.headisnotNone:
+self.head.prev=new_node
+self.head=new_node
+definsertAfter(self,prev_node,new_data):
+ifprev_nodeisNone:
+print("thegivenpreviousnodecannotbeNULL")
+return
+new_node=Node(new_data)
+new_node.next=prev_node.next
+prev_node.next=new_node
+new_node.prev=prev_node
+ifnew_node.next:
+new_node.next.prev=new_node
+defappend(self,new_data):
+new_node=Node(new_data)
+ifself.headisNone:
+self.head=new_node
+return
+last=self.head
+whilelast.next:
+last=last.next
+last.next=new_node
+new_node.prev=last
+return
+defprintList(self,node):
+print("\nTraversalinforwarddirection")
+whilenode:
+print("%d"%(node.data))
+last=node
+node=node.next
+print("\nTraversalinreversedirection")
+whilelast:
+print("%d"%(last.data))
+last=last.prev
+llist=DoublyLinkedList()
+print("Enter5integervalues:")
+foriinrange(1,6):
+llist.append(int(input()))
+print("CreatedDLLis:")llist.printList(llist.head)
+6.stack using array
+class StackNode:
+def __init__(self, data):
+self.data = data
+self.next = None
+class Stack:
+def __init__(self):
+self.root = None
+def isEmpty(self):
+return True if self.root is None else False
+def push(self, data):
+newNode = StackNode(data)
+newNode.next = self.root
+self.root = newNode
+print ("% d pushed to stack" % (data))
+def pop(self):
+if (self.isEmpty()):
+return float("-inf")
+temp = self.root
+self.root = self.root.next
+popped = temp.data
+return popped
+def peek(self):
+if self.isEmpty():
+return float("-inf")
+return self.root.data
+stack = Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
+print ("% d popped from stack" % (stack.pop()))
+print ("Top element is % d " % (stack.peek()))7.stack using linked list
+class Node:
+def __init__(self,data):
+self.data = data
+self.next = None
+class Stack:
+def __init__(self):
+self.head = None
+def isempty(self):
+if self.head == None:
+return True
+else:
+return False
+def push(self,data):
+if self.head == None:
+self.head=Node(data)
+else:
+newnode = Node(data)
+newnode.next = self.head
+self.head = newnode
+def pop(self):
+if self.isempty():
+return None
+else
+poppednode = self.head
+self.head = self.head.next
+poppednode.next = None
+return poppednode.data
+def peek(self):
+if self.isempty():
+return None
+else:
+return self.head.datadef display(self):
+iternode = self.head
+if self.isempty():
+print("Stack Underflow")
+else:
+while(iternode != None):
+print(iternode.data,"->",end = " ")
+iternode = iternode.next
+return
+MyStack = Stack()
+MyStack.push(11)
+MyStack.push(22)
+MyStack.push(33)
+MyStack.push(44)
+MyStack.display()
+print("\nTop element is ",MyStack.peek())
+MyStack.pop()
+MyStack.pop()
+MyStack.display()
+print("\nTop element is ", MyStack.peek())
+8.queue using array
+# Initializing a queue
+queue = []
+# Adding elements to the queue
+queue.append('a')
+queue.append('b')
+queue.append('c')
+print("Initial queue")
+print(queue)
+# Removing elements from the queue
+print("\nElements dequeued from queue")
+print(queue.pop(0))print(queue.pop(0))
+print(queue.pop(0))
+print("\nQueue after removing elements")
+print(queue)
+9.queue using linked list
+class Node:
+def __init__(self, data):
+self.data = data
+self.next = None
+class Queue:
+def __init__(self):
+self.front = self.rear = None
+def isEmpty(self):
+return self.front == None
+def EnQueue(self, item):
+temp = Node(item)
+if self.rear == None:
+self.front = self.rear = temp
+return
+self.rear.next = temp
+self.rear = temp
+def DeQueue(self):
+if self.isEmpty():
+return
+temp = self.front
+self.front = temp.next
+if(self.front == None):
+self.rear = None
+if __name__== '__main__':q = Queue()
+q.EnQueue(10)
+q.EnQueue(20)
+q.DeQueue()
+q.DeQueue()
+q.EnQueue(30)
+q.EnQueue(40)
+q.EnQueue(50)
+q.DeQueue()
+print("Queue Front " + str(q.front.data))
+print("Queue Rear " + str(q.rear.data))
+10.infix to postfix
+def infixToPostfix(expression):
+stack = []
+output = ''
+for character in expression:
+if character not in Operators:
+output+= character
+elif character=='(':
+stack.append('(')
+elif character==')':
+while stack and stack[-1]!= '(':
+output+=stack.pop()
+stack.pop()
+else:
+while stack and stack[-1]!='(' and Priority[character]<=Priority[stack[-1]]:
+output+=stack.pop()stack.append(character)
+while stack:
+output+=stack.pop()
+return output
+expression = input('a*b+(c/d)*a+b')
+print('infix notation:',a*b+(c/d)*a+b)
+print('postfix notation: ',infixToPostfix(a*b+(c/d)*a+b))
